@@ -1,176 +1,67 @@
-# Jooneyd Raza — Landing Page & Portfolio
+# 🚀 How to Manage Your Website Using Antigravity AI
 
-Welcome! This is the codebase for your personal Book Design & Production landing page. This page is designed to showcase your testimonials, services, and portfolio to prospective clients, offering direct links to contact you via WhatsApp, Email, or SMS/iMessage.
+Welcome! This website is a simple, single-page video portfolio designed for your book design business. 
 
-Since you are new to web development, this guide is written in plain English to help you understand how your website is structured, how to view and test it, how to make updates, and how to track your changes using **Git (Version Control)**.
-
----
-
-## 📁 Project Structure
-
-Here is a quick look at what is in your folder:
-
-*   **`index.html`**: The entire core of your website. It contains the text layout (HTML), the visual design/styling (CSS), and the interactive behaviors (JavaScript) all in a single file.
-*   **`.mp4` files** (e.g., `Aaron_Hundlay.mp4`, `Alpha_Parrot.mp4`): The actual video testimonials shown on the page.
-*   **`.jpg` files** (e.g., `Aaron_Hundlay_thumb.jpg`): Backup thumbnail images corresponding to each video testimonial.
+Since you are not a developer, **you do not need to write code, use the terminal, or edit files manually.** Instead, you can use **Antigravity AI** as your personal webmaster. This guide shows you exactly how to talk to the AI to make updates, save your history (Git), and prevent the website from getting messy over time.
 
 ---
 
-## 💻 How to View & Test Your Website Locally
-
-Before making any changes public, you will want to test the website on your own machine. 
-
-### Method 1: Just Double-Click (Quickest but limited)
-1. Open your project folder (`jooneyd-site`) in macOS Finder.
-2. Double-click the `index.html` file.
-3. It will open in your default web browser (Safari, Chrome, etc.).
-> [!NOTE]
-> Modern web browsers block playing local video files (`.mp4`) when opening files directly like this due to security rules. To test video playback, use Method 2.
-
-### Method 2: Use Visual Studio Code + Live Server (Recommended)
-1. Download and install **[Visual Studio Code](https://code.visualstudio.com/)** (a free, lightweight code editor).
-2. Open VS Code, select **File** -> **Open Folder...**, and select your `jooneyd-site` folder.
-3. Click the Extensions icon on the left sidebar (it looks like 4 blocks), search for **"Live Server"** by Ritwick Dey, and click **Install**.
-4. Once installed, open `index.html` in VS Code, and click the **"Go Live"** button in the bottom right corner of the window.
-5. This opens your website on a local web server (usually at `http://127.0.0.1:5500`), where all features (including videos) work perfectly, and the page will automatically refresh whenever you edit and save the code!
+## 📂 What is in this folder?
+*   **`index.html`**: The main code file containing the text, design, and logic of your website.
+*   **`.mp4` files**: Your client video testimonials.
+*   **`.jpg` files**: Thumbnail images for your videos.
 
 ---
 
-## ✍️ How to Edit and Update the Code
+## 💬 AI Prompt Cheat-Sheet (How to talk to the AI)
 
-To make updates, open `index.html` in your text editor (VS Code) and search for the section you want to modify using `Command + F` (Mac).
+When you want to update your site, open your chat with Antigravity AI and copy-paste or adapt these templates. 
 
-### 1. Modifying General Text
-If you want to edit your name, bios, tags, or prices, open `index.html` and search for the text you want to change. Simply delete the old text between the tags and type your new text. For example:
-```html
-<!-- Locate the header and edit the text -->
-<h1 class="hero-name">Jooneyd Raza</h1>
-```
+### 1. Daily Updates & Text Changes
+To change prices, descriptions, bios, or stats, tell the AI exactly what text to swap:
+> **Prompt Template:**
+> *"Please update the pricing for 'Book Cover Design' from $X to $Y in the code. Once done, save (commit) this change to Git as 'Update cover design pricing' and push it to GitHub."*
 
-### 2. Updating the Services List (Rotating Typewriter)
-The services that slide in on your header (and footer) are defined in a simple JavaScript list.
-1. Scroll to the bottom of `index.html` around **Line 504**.
-2. Look for `var SERVICES = [`:
-   ```javascript
-   var SERVICES = [
-     'Book Formatting & Layout Design',
-     'Book Cover Design',
-     'Custom Line Art Illustrations',
-     'Book Publishing Assistance',
-     'High-Converting Social Media Book Posts',
-     'Professional Book Trailer Videos',
-   ];
-   ```
-3. Edit the items inside the single quotes, or add/delete lines to modify your list of services.
+### 2. Adding a New Video Testimonial
+Before asking the AI, copy your new video (`.mp4`) and its thumbnail image (`.jpg`) into this project folder. Then tell the AI:
+> **Prompt Template:**
+> *"I have copied 'client_name.mp4' and 'client_name_thumb.jpg' into the project folder. Please add this video to the video grid in `index.html`. Once done, save (commit) this change to Git as 'Add video testimonial for Client Name' and push it to GitHub."*
 
-### 3. Adding or Replacing Video Testimonials
-When a client sends you a new video testimonial:
-1. Save the new video in your project folder as a `.mp4` file (e.g. `client_name.mp4`).
-2. Save a thumbnail image for the video in the folder (e.g. `client_name_thumb.jpg`).
-3. Scroll to the video grid in `index.html` around **Line 435** (inside `<div class="videos-grid">`).
-4. Duplicate one of the existing video blocks and edit its fields:
-   ```html
-   <div class="vc" onclick="playVideo(this)" data-src="client_name.mp4" data-name="Client Name">
-     <div class="vc-wrap">
-       <!-- You can link directly to your thumbnail file here -->
-       <img class="vc-thumb" src="client_name_thumb.jpg" alt="Client Name" loading="lazy">
-       <div class="vc-overlay">
-         <div class="play-ring"><div class="play-tri"></div></div>
-       </div>
-     </div>
-     <div class="vc-name">Client Name</div>
-   </div>
-   ```
-   *Note: While existing videos use embedded `data:image/jpeg;base64` codes to make the page self-contained, using the filename directly (`src="client_name_thumb.jpg"`) is much easier and works exactly the same.*
+### 3. Adding a New Written Review
+To add a text review to the scrolling carousel:
+> **Prompt Template:**
+> *"Please add a new 5-star review in the carousel: 'Quote text here' from 'Client Name' for the service 'Book Formatting'. Once done, save (commit) this change to Git as 'Add written review from Client Name' and push it to GitHub."*
 
-### 4. Editing Written Reviews
-Your review carousel sits around **Line 420** of `index.html`. To add a new review, copy and paste an existing `rv` block and modify the contents:
-```html
-<div class="rv" onclick="toggleRv(this)">
-  <div class="rv-q">“</div>
-  <div class="rv-stars">★★★★★</div>
-  <p class="rv-txt">Type the client's quote here...</p>
-  <div class="rv-more">Read full review ↓</div>
-  <div class="rv-foot">
-    <div class="rv-av" style="background:linear-gradient(135deg,#b8924a,rgba(14,10,6,.5) 150%)">
-      C <!-- First letter of their name for avatar -->
-    </div>
-    <div>
-      <div class="rv-name">Client Name</div>
-      <div class="rv-role">Service Provided</div>
-    </div>
-  </div>
-</div>
-```
-
-### 5. Adding New Countries to the Map
-You have a map showing dots in countries you have worked with. To add a new country dot:
-1. Scroll to the bottom of the script section around **Line 701**.
-2. Look for `var countries = [ ... ];`
-3. Add a new row to the array:
-   ```javascript
-   {name: "New Country", x: 45, y: 30},
-   ```
-   *   `x`: Position of the dot from the left edge of the map (percentage, `0` to `100`).
-   *   `y`: Position of the dot from the top edge of the map (percentage, `0` to `100`).
+### 4. Adding a Client Location Dot on the Map
+To add a new dot on the world map:
+> **Prompt Template:**
+> *"Please add a dot for [Country Name] on the interactive world map. Once done, save (commit) this change to Git as 'Add Country Name to world map' and push it to GitHub."*
 
 ---
 
-## 🐙 Git & Version Control (Safety Net & Collaboration)
+## 🛡️ Keeping Your Changes Safe (Save & Undo)
 
-Git is a version control system. Think of it as a super-powered "Save" and "Undo" system. It tracks every line of code you change, letting you revert mistakes and upload your project safely to remote servers (like GitHub).
+Your project uses **Git** (a code history saver). Every time the AI makes a change, you should ask it to "commit" (save a snapshot) and "push" (back it up to GitHub). This creates a safety net.
 
-We have already initialized a local Git repository in this folder and saved its current state.
+### How to Undo a Mistake
+If the AI makes a change and something looks broken or you change your mind:
+> **Prompt Template:**
+> *"I don't like the last changes. Please revert/restore the project to the last saved state in Git."*
+*(The AI will automatically reset the project to your last safe snapshot).*
 
-### How to Use Git Day-to-Day (The Commands)
-When you make updates (e.g. changing texts, adding a review), follow this 3-step cycle in your Terminal:
-
-1. **Check what has changed**:
-   ```bash
-   git status
-   ```
-   *This tells you which files have been modified or added.*
-
-2. **Stage your changes (prepare them to be saved)**:
-   ```bash
-   git add .
-   ```
-   *The dot `.` tells Git to prepare all changed files.*
-
-3. **Commit your changes (save the state forever)**:
-   ```bash
-   git commit -m "Added a new video testimonial for John Doe"
-   ```
-   *Always write a short, clear description inside the quotes so you know what you did.*
-
-### Using Visual Tools (Instead of typing commands)
-If you do not want to use the terminal:
-*   **VS Code**: Open the **Source Control** tab on the left (the branch icon with a badge). You will see your changed files. Click the **`+`** icon next to "Changes" to stage them, type your message in the box at the top, and click **Commit**.
-*   **GitHub Desktop**: You can download the free **[GitHub Desktop](https://desktop.github.com/)** application, import your folder, and manage commits with a simple, visual click-and-point interface.
+### How to Back Up to the Internet
+If you made several changes and want to make sure they are saved online:
+> **Prompt Template:**
+> *"Please push all my current changes to GitHub."*
 
 ---
 
-## ☁️ Connecting Your Project to a Remote Git Repository (GitHub)
+## 🧹 How to Prevent Website Bloat (Keeping it Clean)
 
-To back up your project online, publish it to a live hosting provider, or share it with other developers, you should upload it to a remote Git platform like **GitHub**.
+Over time, websites can get messy ("bloated") with unused code or duplicate parts, making it hard for both humans and AI to read. 
 
-Here is how to set it up:
+To keep your project lean and clean for the long term, always add these rules to your prompts when asking for new features:
 
-1. Go to **[GitHub.com](https://github.com/)** and sign up for a free account.
-2. Log in and click the green **"New"** button on the left sidebar to create a repository.
-3. Set your repository name (e.g., `jooneyd-site`).
-4. **IMPORTANT**: Leave "Add a README file", "Add .gitignore", and "Choose a license" **UNCHECKED**. (We already have these locally).
-5. Click **"Create repository"**.
-6. You will see a page with some code blocks. Look for the block titled **"…or push an existing repository from the command line"** and run those exact commands in your terminal inside your project folder:
-   ```bash
-   git remote add origin https://github.com/YOUR_USERNAME/jooneyd-site.git
-   git branch -M main
-   git push -u origin main
-   ```
-   *(Replace the URL with the actual URL shown on your GitHub page).*
-
-After you run these commands, all your code and videos will be securely backed up on GitHub! Whenever you commit changes locally, you can upload them to the internet by running:
-```bash
-git push
-```
-Or by clicking **"Sync Changes" / "Publish"** in VS Code/GitHub Desktop.
+1.  **Keep it minimal**: *"Keep the code clean and well-structured, reusing existing CSS styles. Avoid adding new large external libraries."*
+2.  **Delete unused files**: *"If we are replacing any videos or images, please delete the old files from the folder to keep the workspace clean."*
+3.  **Use one file**: *"Keep all HTML, CSS, and JS inside `index.html` so the website remains self-contained and simple."*
