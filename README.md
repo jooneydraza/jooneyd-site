@@ -6,7 +6,7 @@ Since you are not a developer, **you do not need to write code, use the terminal
 
 ---
 
-## 📂 What is in this folder?
+## 📁 What is in this folder?
 *   **`index.html`**: The main code file containing the text, design, and logic of your website.
 *   **`.mp4` files**: Your client video testimonials.
 *   **`.jpg` files**: Thumbnail images for your videos.
@@ -49,10 +49,28 @@ If the AI makes a change and something looks broken or you change your mind:
 > *"I don't like the last changes. Please revert/restore the project to the last saved state in Git."*
 *(The AI will automatically reset the project to your last safe snapshot).*
 
-### How to Back Up to the Internet
-If you made several changes and want to make sure they are saved online:
+### How to Back Up to the Internet & Update Live Site
+If you made several changes and want to make sure they are saved online and deployed:
 > **Prompt Template:**
 > *"Please push all my current changes to GitHub."*
+
+---
+
+## ☁️ How Your Website is Hosted & Published (Netlify + GitHub)
+
+Your website is hosted on **Netlify** using a feature called **Continuous Deployment**. Here is how the loop works:
+
+1.  You test and approve changes locally with the AI.
+2.  You ask the AI to push to GitHub (which updates your backup repository).
+3.  Netlify automatically detects this push, grabs the new code, and updates your live domain (e.g. your custom domain) within 10 seconds.
+
+### Setting up the connection (One-time Setup):
+1.  Log in to your **[Netlify Dashboard](https://app.netlify.com/)**.
+2.  Click on your existing site.
+3.  Go to **Site settings** -> **Build & deploy**.
+4.  Under **Continuous Deployment**, click **Link repository**.
+5.  Select **GitHub**, log in, and authorize Netlify.
+6.  Select the `jooneyd-site` repository and click **Deploy site**.
 
 ---
 
